@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovens Talentos - Jogo da Memória de Ligações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="memoriaLigacoes.css">
+</head>
+
+<body>
+    <div id="fundo-quimico"></div>
+    <header class="header-jogo">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-jt">
+                    <div class="logo-bolinha"><span>JT</span></div>
+                    <div class="logo-texto">
+                        <h2>Jovens Talentos</h2>
+                        <p>Memória de Ligações</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav-jogo">
+                <a href="index.html" class="botao-voltar">Voltar ao Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="curiosidade-container" class="curiosidade-container-oculto">
+        <div id="curiosidade-popup">
+            <h3 id="curiosidade-titulo">Composto Formado!</h3>
+            <p id="curiosidade-texto"></p>
+        </div>
+    </div>
+
+    <main class="main-jogo">
+        <div class="jogo-container">
+            <section class="info-jogo-section">
+                <div class="info-container">
+                    <div class="placar-container">
+                        <div class="placar-jogador">
+                            <div class="avatar-jogador">👤</div>
+                            <div class="dados-jogador">
+                                <span class="nome-jogador" id="label-j1">Jogador 1</span>
+                                <span class="pontos-jogador" id="pontos-j1">0</span>
+                            </div>
+                        </div>
+                        <div class="placar-jogador">
+                            <div class="avatar-jogador">👤</div>
+                            <div class="dados-jogador">
+                                <span class="nome-jogador" id="label-j2">Jogador 2</span>
+                                <span class="pontos-jogador" id="pontos-j2">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-indicador">
+                            <span class="status-texto" id="status-texto">Vez do Jogador 1</span>
+                        </div>
+                        <div class="timer-container">
+                            <div class="timer-display">
+                                <span class="timer-icon">⏱️</span>
+                                <span class="timer-text" id="timer-text">05:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="modo-jogo-section">
+                <div class="modo-container">
+                    <div class="tipo-ligacao-container">
+                        <span class="tipo-ligacao-label">Tipo de Ligação:</span>
+                        <select id="select-tipo-ligacao">
+                            <option value="ionica">Memória de Ligações Iônicas</option>
+                            <option value="covalente">Memória de Ligações Covalentes</option>
+                            <option value="mista" selected>Memória de Ligações Mistas</option>
+                        </select>
+                    </div>
+                    <div class="opcoes-jogo-container">
+                        <div class="opcao-modo-jogo">
+                            <label class="switch">
+                                <input type="checkbox" id="toggle-cpu">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="modo-texto">Jogar contra CPU</span>
+                        </div>
+                        <div class="dificuldade-container" id="dificuldade-container" style="display: none;">
+                            <span class="dificuldade-label">Dificuldade:</span>
+                            <select id="select-dificuldade">
+                                <option value="facil">Fácil (2-3 cartas)</option>
+                                <option value="medio" selected>Médio (3-4 cartas)</option>
+                                <option value="dificil">Difícil (4-5 cartas)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="tabuleiro-section">
+                <div class="tabuleiro-container">
+                    <div id="tabuleiro-jogo"></div>
+                </div>
+            </section>
+            <section class="acoes-section">
+                <button id="botao-reiniciar" class="botao-acao">
+                    <span class="botao-texto">Novo Jogo</span>
+                </button>
+            </section>
+        </div>
+    </main>
+    <script src="sons.js"></script>
+    <script src="memoriaLigacoes.js"></script>
+</body>
+
+</html>

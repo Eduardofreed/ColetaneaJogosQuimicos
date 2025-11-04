@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador Orgânico - Jovens Talentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="classificadorOrganico.css">
+</head>
+
+<body>
+    <!-- Header do jogo -->
+    <header class="header-jogo">
+        <div class="header-container">
+            <a href="index.html" class="botao-voltar" id="botao-voltar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+                Voltar
+            </a>
+            <div class="titulo-jogo-header">
+                <h1>Classificador Orgânico</h1>
+                <p class="subtitulo-jogo">Identifique as funções orgânicas das moléculas!</p>
+            </div>
+            <div class="pontuacao-jogo">
+                <span class="pontos" id="pontuacao">0</span>
+                <span class="rotulo-pontos">pontos</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal do jogo -->
+    <main class="conteudo-jogo">
+        <div class="area-jogo">
+            <!-- Molécula atual -->
+            <div class="molecula-atual">
+                <h2>Analise a molécula:</h2>
+                <div class="cartao-molecula" id="cartao-molecula">
+                    <div class="visual-molecula">
+                        <div class="estrutura-molecula" id="estrutura-molecula">
+                            <!-- Estrutura da molécula será desenhada aqui -->
+                        </div>
+                    </div>
+                    <div class="info-molecula">
+                        <div class="nome-molecula" id="nome-molecula">Metano</div>
+                        <div class="formula-molecula" id="formula-molecula">CH₄</div>
+                        <div class="descricao-molecula" id="descricao-molecula">Gás incolor e inodoro, principal
+                            componente do gás natural</div>
+                    </div>
+                </div>
+
+                <!-- Grupo funcional destacado -->
+                <div class="grupo-funcional" id="grupo-funcional">
+                    <h3>Grupo Funcional Destacado:</h3>
+                    <div class="destacado-funcional" id="destacado-funcional">
+                        <!-- Parte da molécula com destaque visual -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Funções orgânicas disponíveis -->
+            <div class="funcoes-disponiveis">
+                <h3>Selecione a função orgânica:</h3>
+                <div class="grid-funcoes" id="grid-funcoes">
+                    <!-- Botões de funções serão criados dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Informações sobre funções orgânicas -->
+            <div class="info-funcoes">
+                <div class="painel-info-funcao">
+                    <h3>📚 Sobre Funções Orgânicas</h3>
+                    <div class="lista-funcoes" id="lista-funcoes">
+                        <!-- Informações das funções serão mostradas aqui -->
+                    </div>
+                </div>
+
+                <div class="dicas-jogo">
+                    <h3>💡 Dicas</h3>
+                    <ul>
+                        <li>Observe os átomos ligados ao carbono</li>
+                        <li>Procure por oxigênio, nitrogênio e halogênios</li>
+                        <li>Lembre-se da prioridade das funções</li>
+                        <li>Funções com oxigênio têm maior prioridade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles do jogo -->
+        <div class="controles-jogo">
+            <button class="botao-controle" id="botao-verificar">Verificar Função</button>
+            <button class="botao-controle botao-secundario" id="botao-proxima">Próxima Molécula</button>
+            <button class="botao-controle botao-secundario" id="botao-dica">Mostrar Estrutura</button>
+        </div>
+
+        <!-- Feedback do jogo -->
+        <div class="feedback-jogo" id="feedback">
+            <div class="mensagem-feedback" id="mensagem-feedback"></div>
+        </div>
+
+        <!-- Progresso do jogo -->
+        <div class="progresso-jogo">
+            <div class="barra-progresso">
+                <div class="progresso-fill" id="barra-progresso"></div>
+            </div>
+            <span class="progresso-texto" id="progresso-texto">Molécula 1 de 12</span>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="sons.js"></script>
+    <script src="classificadorOrganico.js"></script>
+</body>
+
+</html>

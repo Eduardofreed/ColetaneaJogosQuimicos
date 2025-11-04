@@ -1,0 +1,1348 @@
+/* Estilos específicos para o jogo da Tabela Periódica */
+
+.main-jogo {
+    min-height: calc(100vh - 100px);
+    padding: 40px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.jogo-container-tabela {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-jogo-section {
+    background: rgba(2, 6, 23, 0.9);
+    border-radius: 24px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.placar-jogador {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, rgba(33, 212, 253, 0.1) 0%, rgba(183, 33, 255, 0.1) 100%);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.placar-jogador:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-color: var(--primary-color);
+}
+
+.avatar-jogador {
+    font-size: 1.8em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dados-jogador {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nome-jogador {
+    font-size: 1em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.pontos-jogador {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.status-indicador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, rgba(33, 212, 253, 0.15) 0%, rgba(183, 33, 255, 0.15) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.status-texto {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1em;
+}
+
+.nivel-indicador {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.nivel-texto {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9em;
+}
+
+.barra-progresso {
+    width: 120px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.progresso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Seção de Controles */
+.controles-section {
+    background: rgba(2, 6, 23, 0.9);
+    border-radius: 24px;
+    padding: 20px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+.controles-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.dificuldade-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.dificuldade-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1em;
+}
+
+#select-modo {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+#select-modo:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#select-modo:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+.modo-texto {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1em;
+}
+
+/* Switches */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* Seção da Tabela */
+.tabela-section {
+    background: rgba(2, 6, 23, 0.8);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+.tabela-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.tabela-periodica {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 3px;
+    max-width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+}
+
+/* Elementos da tabela */
+.elemento {
+    width: 60px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.elemento.vazio {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+.elemento.correto {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.3) 0%, rgba(33, 212, 253, 0.3) 100%);
+    border-color: var(--success-color);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    animation: elementoCorreto 0.5s ease;
+}
+
+.elemento.incorreto {
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.3) 0%, rgba(255, 165, 0, 0.3) 100%);
+    border-color: var(--error-color);
+    animation: elementoIncorreto 0.5s ease;
+}
+
+@keyframes elementoCorreto {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes elementoIncorreto {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.elemento-numero {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.elemento-simbolo {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.elemento-nome {
+    font-size: 0.6em;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.elemento.draggable {
+    cursor: grab;
+    z-index: 10;
+}
+
+.elemento.draggable:active {
+    cursor: grabbing;
+}
+
+.elemento.drop-target {
+    background: rgba(33, 212, 253, 0.2);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Seção de Elementos para Arrastrar */
+.elementos-section {
+    background: rgba(2, 6, 23, 0.9);
+    border-radius: 24px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+.elementos-container h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.elementos-paleta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.elemento-arrastavel {
+    width: 80px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(33, 212, 253, 0.3);
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid transparent;
+}
+
+.elemento-arrastavel:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.elemento-arrastavel:active {
+    cursor: grabbing;
+    transform: translateY(-1px) scale(1.02);
+}
+
+.elemento-arrastavel-numero {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 4px;
+}
+
+.elemento-arrastavel-simbolo {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.elemento-arrastavel-nome {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Área das ações */
+.acoes-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.botao-acao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 35px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px var(--shadow-medium), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    min-width: 140px;
+    justify-content: center;
+}
+
+.botao-acao:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px var(--shadow-heavy), 0 0 0 2px rgba(255, 255, 255, 0.2);
+    filter: brightness(1.1);
+}
+
+.botao-acao:nth-child(2) {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+}
+
+/* Responsividade melhorada para dispositivos móveis */
+
+/* Tablets e dispositivos médios (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .main-jogo {
+        padding: 35px 20px;
+    }
+
+    .jogo-container-tabela {
+        max-width: 1000px;
+        gap: 25px;
+    }
+
+    .info-jogo-section {
+        padding: 22px 25px;
+        border-radius: 20px;
+    }
+
+    .info-container {
+        gap: 20px;
+    }
+
+    .placar-jogador {
+        padding: 18px 22px;
+        border-radius: 18px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.6em;
+        width: 45px;
+        height: 45px;
+    }
+
+    .status-indicador {
+        padding: 12px 20px;
+        border-radius: 14px;
+    }
+
+    .status-texto {
+        font-size: 1em;
+    }
+
+    .barra-progresso {
+        width: 100px;
+        height: 7px;
+    }
+
+    .controles-section {
+        padding: 18px 25px;
+        border-radius: 20px;
+    }
+
+    .controles-container {
+        gap: 25px;
+    }
+
+    .dificuldade-container {
+        padding: 12px 18px;
+        border-radius: 10px;
+    }
+
+    #select-modo {
+        padding: 8px 12px;
+        font-size: 0.95em;
+        min-width: 180px;
+        border-radius: 6px;
+    }
+
+    .opcao-mostrar-numeros,
+    .opcao-mostrar-nomes {
+        gap: 8px;
+    }
+
+    .modo-texto {
+        font-size: 0.95em;
+    }
+
+    .tabela-section {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .tabela-container {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .tabela-periodica {
+        grid-template-columns: repeat(9, 1fr);
+        gap: 2px;
+        padding: 8px;
+    }
+
+    .elemento {
+        width: 45px;
+        height: 55px;
+        border-radius: 6px;
+    }
+
+    .elemento-simbolo {
+        font-size: 0.95em;
+    }
+
+    .elemento-nome {
+        font-size: 0.5em;
+    }
+
+    .elemento-numero {
+        font-size: 0.65em;
+    }
+
+    .elementos-section {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .elementos-container h3 {
+        font-size: 1.1em;
+        margin-bottom: 12px;
+    }
+
+    .elementos-paleta {
+        max-height: 180px;
+        gap: 8px;
+    }
+
+    .elemento-arrastavel {
+        width: 70px;
+        height: 80px;
+        border-radius: 8px;
+    }
+
+    .elemento-arrastavel-simbolo {
+        font-size: 1.5em;
+    }
+
+    .elemento-arrastavel-nome {
+        font-size: 0.75em;
+    }
+
+    .elemento-arrastavel-numero {
+        font-size: 0.8em;
+    }
+
+    .acoes-section {
+        gap: 12px;
+    }
+
+    .botao-acao {
+        padding: 12px 20px;
+        font-size: 1em;
+        border-radius: 16px;
+        min-width: 130px;
+    }
+}
+
+/* Dispositivos móveis médios (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .main-jogo {
+        padding: 30px 15px;
+    }
+
+    .jogo-container-tabela {
+        gap: 20px;
+    }
+
+    .info-jogo-section {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .info-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .placar-jogador {
+        padding: 15px 20px;
+        border-radius: 16px;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.5em;
+        width: 40px;
+        height: 40px;
+    }
+
+    .dados-jogador {
+        gap: 4px;
+        text-align: center;
+    }
+
+    .nome-jogador {
+        font-size: 0.95em;
+    }
+
+    .pontos-jogador {
+        font-size: 1.4em;
+    }
+
+    .status-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .status-indicador {
+        padding: 12px 16px;
+        border-radius: 12px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .status-texto {
+        font-size: 0.95em;
+    }
+
+    .nivel-indicador {
+        align-items: center;
+    }
+
+    .nivel-texto {
+        font-size: 0.85em;
+    }
+
+    .barra-progresso {
+        width: 100px;
+        height: 6px;
+    }
+
+    .controles-section {
+        padding: 18px 20px;
+        border-radius: 18px;
+    }
+
+    .controles-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .dificuldade-container {
+        padding: 12px 15px;
+        border-radius: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dificuldade-label {
+        font-size: 1em;
+    }
+
+    #select-modo {
+        padding: 10px 12px;
+        font-size: 0.95em;
+        min-width: 100%;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .opcoes-jogo {
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .opcao-mostrar-numeros,
+    .opcao-mostrar-nomes {
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .modo-texto {
+        font-size: 0.9em;
+    }
+
+    .tabela-section {
+        padding: 18px 15px;
+        border-radius: 16px;
+    }
+
+    .tabela-container {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .tabela-periodica {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+        padding: 6px;
+    }
+
+    .elemento {
+        width: 38px;
+        height: 48px;
+        border-radius: 5px;
+    }
+
+    .elemento-simbolo {
+        font-size: 0.85em;
+    }
+
+    .elemento-nome {
+        font-size: 0.45em;
+    }
+
+    .elemento-numero {
+        font-size: 0.6em;
+    }
+
+    .elementos-section {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .elementos-container h3 {
+        font-size: 1.05em;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .elementos-paleta {
+        max-height: 160px;
+        gap: 6px;
+        justify-content: center;
+        padding: 8px;
+    }
+
+    .elemento-arrastavel {
+        width: 65px;
+        height: 75px;
+        border-radius: 6px;
+    }
+
+    .elemento-arrastavel-simbolo {
+        font-size: 1.4em;
+    }
+
+    .elemento-arrastavel-nome {
+        font-size: 0.7em;
+    }
+
+    .elemento-arrastavel-numero {
+        font-size: 0.75em;
+    }
+
+    .acoes-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .botao-acao {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px 18px;
+        font-size: 0.95em;
+        border-radius: 14px;
+        min-width: 120px;
+        min-height: 44px;
+    }
+}
+
+/* Dispositivos móveis pequenos (até 480px) */
+@media (max-width: 480px) {
+    .main-jogo {
+        padding: 25px 12px;
+    }
+
+    .jogo-container-tabela {
+        gap: 18px;
+    }
+
+    .info-jogo-section {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .info-container {
+        gap: 15px;
+    }
+
+    .placar-jogador {
+        padding: 12px 16px;
+        border-radius: 14px;
+        gap: 10px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.4em;
+        width: 38px;
+        height: 38px;
+    }
+
+    .dados-jogador {
+        gap: 3px;
+    }
+
+    .nome-jogador {
+        font-size: 0.9em;
+    }
+
+    .pontos-jogador {
+        font-size: 1.3em;
+    }
+
+    .status-indicador {
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    .status-texto {
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    .nivel-texto {
+        font-size: 0.8em;
+    }
+
+    .barra-progresso {
+        width: 80px;
+        height: 5px;
+    }
+
+    .controles-section {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .controles-container {
+        gap: 15px;
+    }
+
+    .dificuldade-container {
+        padding: 10px 12px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .dificuldade-label {
+        font-size: 0.95em;
+    }
+
+    #select-modo {
+        padding: 8px 10px;
+        font-size: 0.9em;
+        min-width: 100%;
+        border-radius: 6px;
+    }
+
+    .opcoes-jogo {
+        gap: 12px;
+    }
+
+    .opcao-mostrar-numeros,
+    .opcao-mostrar-nomes {
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .modo-texto {
+        font-size: 0.85em;
+    }
+
+    .switch {
+        min-width: 45px;
+        min-height: 25px;
+    }
+
+    .slider {
+        width: 45px;
+        height: 25px;
+    }
+
+    .slider:before {
+        width: 17px;
+        height: 17px;
+    }
+
+    .tabela-section {
+        padding: 15px 12px;
+        border-radius: 14px;
+    }
+
+    .tabela-container {
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .tabela-periodica {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1px;
+        padding: 4px;
+    }
+
+    .elemento {
+        width: 35px;
+        height: 45px;
+        border-radius: 4px;
+    }
+
+    .elemento-simbolo {
+        font-size: 0.8em;
+    }
+
+    .elemento-nome {
+        font-size: 0.4em;
+    }
+
+    .elemento-numero {
+        font-size: 0.55em;
+    }
+
+    .elementos-section {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .elementos-container h3 {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+
+    .elementos-paleta {
+        max-height: 140px;
+        gap: 5px;
+        padding: 6px;
+    }
+
+    .elemento-arrastavel {
+        width: 60px;
+        height: 70px;
+        border-radius: 5px;
+    }
+
+    .elemento-arrastavel-simbolo {
+        font-size: 1.3em;
+    }
+
+    .elemento-arrastavel-nome {
+        font-size: 0.65em;
+    }
+
+    .elemento-arrastavel-numero {
+        font-size: 0.7em;
+    }
+
+    .acoes-section {
+        gap: 8px;
+    }
+
+    .botao-acao {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        border-radius: 12px;
+        min-width: 110px;
+    }
+}
+
+/* Dispositivos muito pequenos (até 380px) */
+@media (max-width: 380px) {
+    .main-jogo {
+        padding: 20px 10px;
+    }
+
+    .jogo-container-tabela {
+        gap: 15px;
+    }
+
+    .info-jogo-section {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .info-container {
+        gap: 12px;
+    }
+
+    .placar-jogador {
+        padding: 10px 12px;
+        border-radius: 12px;
+        gap: 8px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.3em;
+        width: 35px;
+        height: 35px;
+    }
+
+    .nome-jogador {
+        font-size: 0.85em;
+    }
+
+    .pontos-jogador {
+        font-size: 1.2em;
+    }
+
+    .status-indicador {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+
+    .status-texto {
+        font-size: 0.85em;
+    }
+
+    .nivel-texto {
+        font-size: 0.75em;
+    }
+
+    .barra-progresso {
+        width: 70px;
+        height: 4px;
+    }
+
+    .controles-section {
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .controles-container {
+        gap: 12px;
+    }
+
+    .dificuldade-container {
+        padding: 8px 10px;
+        border-radius: 6px;
+        gap: 6px;
+    }
+
+    .dificuldade-label {
+        font-size: 0.9em;
+    }
+
+    #select-modo {
+        padding: 7px 8px;
+        font-size: 0.85em;
+        border-radius: 5px;
+    }
+
+    .opcoes-jogo {
+        gap: 10px;
+    }
+
+    .modo-texto {
+        font-size: 0.8em;
+    }
+
+    .switch {
+        min-width: 40px;
+        min-height: 22px;
+    }
+
+    .slider {
+        width: 40px;
+        height: 22px;
+    }
+
+    .slider:before {
+        width: 15px;
+        height: 15px;
+    }
+
+    .tabela-section {
+        padding: 12px 8px;
+        border-radius: 12px;
+    }
+
+    .tabela-container {
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .tabela-periodica {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        padding: 3px;
+    }
+
+    .elemento {
+        width: 32px;
+        height: 42px;
+        border-radius: 3px;
+    }
+
+    .elemento-simbolo {
+        font-size: 0.75em;
+    }
+
+    .elemento-nome {
+        font-size: 0.35em;
+    }
+
+    .elemento-numero {
+        font-size: 0.5em;
+    }
+
+    .elementos-section {
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .elementos-container h3 {
+        font-size: 0.95em;
+        margin-bottom: 6px;
+    }
+
+    .elementos-paleta {
+        max-height: 120px;
+        gap: 4px;
+        padding: 5px;
+    }
+
+    .elemento-arrastavel {
+        width: 55px;
+        height: 65px;
+        border-radius: 4px;
+    }
+
+    .elemento-arrastavel-simbolo {
+        font-size: 1.2em;
+    }
+
+    .elemento-arrastavel-nome {
+        font-size: 0.6em;
+    }
+
+    .elemento-arrastavel-numero {
+        font-size: 0.65em;
+    }
+
+    .botao-acao {
+        padding: 8px 12px;
+        font-size: 0.85em;
+        border-radius: 10px;
+        min-width: 100px;
+    }
+}
+
+/* Melhorias para toque em dispositivos móveis */
+@media (hover: none) and (pointer: coarse) {
+    .elemento-arrastavel {
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: none;
+    }
+
+    .elemento-arrastavel:active {
+        cursor: grabbing;
+        transform: scale(0.95);
+    }
+
+    .elemento {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: none;
+    }
+
+    .elemento.drop-target {
+        touch-action: none;
+    }
+
+    .botao-acao {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 44px;
+    }
+
+    #select-modo {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 44px;
+    }
+
+    .switch {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* Aumentar área de toque para elementos interativos */
+    .opcao-mostrar-numeros,
+    .opcao-mostrar-nomes {
+        min-height: 44px;
+        padding: 8px;
+        border-radius: 8px;
+        touch-action: manipulation;
+    }
+}
+
+/* Animações e efeitos */
+@keyframes tabelaFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tabela-periodica {
+    animation: tabelaFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dicas e tooltips */
+.dica-tooltip {
+    position: absolute;
+    background: rgba(10, 25, 41, 0.95);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 8px 25px var(--shadow-heavy);
+    font-size: 0.9em;
+    line-height: 1.4;
+    max-width: 250px;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.dica-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--primary-color);
+}
+
+.dica-tooltip.visivel {
+    opacity: 1;
+}

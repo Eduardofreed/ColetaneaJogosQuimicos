@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça aos Átomos - Jovens Talentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cacaaAtomos.css">
+</head>
+
+<body>
+    <header class="header-jogo">
+        <div class="header-container">
+            <a href="index.html" class="botao-voltar" id="botao-voltar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+                Voltar
+            </a>
+            <div class="titulo-jogo-header">
+                <h1>Caça aos Átomos</h1>
+                <p>Construa átomos arrastando prótons, nêutrons e elétrons!</p>
+            </div>
+            <div class="pontuacao-jogo">
+                <span class="pontos" id="pontuacao">0</span>
+                <span class="rotulo-pontos">pontos</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-jogo">
+        <div class="area-jogo">
+            <div class="info-atomo-alvo">
+                <h2>Construa o átomo:</h2>
+                <div class="atomo-info">
+                    <div class="simbolo-atomo" id="simbolo-alvo">H</div>
+                    <div class="detalhes-atomo">
+                        <span class="nome-atomo" id="nome-alvo">Hidrogênio</span>
+                        <span class="numero-atomico">Número atômico: <strong id="numero-atomico-alvo">1</strong></span>
+                        <span class="massa-atomica">Massa atômica: <strong id="massa-atomica-alvo">1</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area-construcao">
+                <div class="nucleo-atomo" id="nucleo">
+                    <div class="protons-container" id="protons-container">
+                    </div>
+                    <div class="neutrons-container" id="neutrons-container">
+                    </div>
+                </div>
+                <div class="orbitas-container">
+                    <div class="orbita-k" id="orbita-k">
+                    </div>
+                    <div class="orbita-l" id="orbita-l" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="particulas-disponiveis">
+                <h3>Arraste as partículas:</h3>
+                <div class="particulas-container">
+                    <div class="particula-item">
+                        <div class="particula proton-particula" id="proton-fonte" draggable="true">
+                            <span class="particula-label">Próton</span>
+                        </div>
+                        <span class="contador-particula" id="contador-proton">0</span>
+                    </div>
+                    <div class="particula-item">
+                        <div class="particula neutron-particula" id="neutron-fonte" draggable="true">
+                            <span class="particula-label">Nêutron</span>
+                        </div>
+                        <span class="contador-particula" id="contador-neutron">0</span>
+                    </div>
+                    <div class="particula-item">
+                        <div class="particula electron-particula" id="electron-fonte" draggable="true">
+                            <span class="particula-label">Elétron</span>
+                        </div>
+                        <span class="contador-particula" id="contador-electron">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controles-jogo">
+            <button class="botao-controle" id="botao-verificar">Verificar Átomo</button>
+            <button class="botao-controle botao-secundario" id="botao-limpar">Limpar</button>
+            <button class="botao-controle botao-secundario" id="botao-dica">Dica</button>
+        </div>
+
+        <div class="feedback-jogo" id="feedback">
+            <div class="mensagem-feedback" id="mensagem-feedback"></div>
+        </div>
+
+        <div class="progresso-jogo">
+            <div class="barra-progresso">
+                <div class="progresso-fill" id="barra-progresso"></div>
+            </div>
+            <span class="progresso-texto" id="progresso-texto">Átomo 1 de 10</span>
+        </div>
+    </main>
+
+    <script src="sons.js"></script>
+    <script src="cacaaAtomos.js"></script>
+</body>
+
+</html>

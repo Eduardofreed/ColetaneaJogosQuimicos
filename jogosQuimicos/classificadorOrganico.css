@@ -1,0 +1,517 @@
+/* Classificador Orgânico - Funções Orgânicas */
+
+/* Layout geral do jogo */
+.conteudo-jogo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 140px);
+}
+
+.area-jogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .area-jogo {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
+
+/* Molécula atual */
+.molecula-atual {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .molecula-atual {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.cartao-molecula {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .cartao-molecula {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+.visual-molecula {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.estrutura-molecula {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-molecula {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nome-molecula {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.formula-molecula {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.descricao-molecula {
+    font-size: 1em;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Visualização da molécula */
+.atomo-organico {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.atomo-carbono {
+    background: linear-gradient(135deg, #374151, #1f2937);
+    border: 2px solid #6b7280;
+}
+
+.atomo-hidrogenio {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    color: #1e40af;
+    border: 2px solid #93c5fd;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.atomo-oxigenio {
+    background: linear-gradient(135deg, #fecaca, #fca5a5);
+    color: #dc2626;
+    border: 2px solid #f87171;
+}
+
+.atomo-nitrogênio {
+    background: linear-gradient(135deg, #bbf7d0, #86efac);
+    color: #16a34a;
+    border: 2px solid #4ade80;
+}
+
+.atomo-halogenio {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #d97706;
+    border: 2px solid #f59e0b;
+}
+
+.ligacao {
+    position: absolute;
+    background: #6b7280;
+    transform-origin: center;
+}
+
+.ligacao-simples {
+    height: 3px;
+    border-radius: 1.5px;
+}
+
+.ligacao-dupla {
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #6b7280 33%, transparent 33%, transparent 66%, #6b7280 66%);
+}
+
+.ligacao-tripla {
+    height: 9px;
+    border-radius: 4.5px;
+    background: linear-gradient(to right, #6b7280 20%, transparent 20%, transparent 30%, #6b7280 30%, #6b7280 50%, transparent 50%, transparent 60%, #6b7280 60%, #6b7280 80%, transparent 80%);
+}
+
+/* Grupo funcional destacado */
+.grupo-funcional {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.grupo-funcional h3 {
+    color: var(--text-primary);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.destacado-funcional {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(79, 70, 229, 0.1);
+    position: relative;
+}
+
+/* Funções disponíveis */
+.funcoes-disponiveis {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.funcoes-disponiveis h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.grid-funcoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.botao-funcao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.botao-funcao:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+
+.botao-funcao.ativo {
+    background: rgba(79, 70, 229, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+}
+
+.botao-funcao.correto {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    animation: pulsoCorreto 0.6s ease-out;
+}
+
+.icone-funcao {
+    font-size: 2em;
+    width: 50px;
+    text-align: center;
+}
+
+.info-funcao {
+    flex: 1;
+}
+
+.nome-funcao {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.exemplo-funcao {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+/* Informações sobre funções */
+.info-funcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .info-funcoes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.painel-info-funcao,
+.dicas-jogo {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.painel-info-funcao h3,
+.dicas-jogo h3 {
+    color: var(--text-primary);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dicas-jogo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dicas-jogo li {
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.dicas-jogo li::before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+}
+
+.info-funcao-detalhe {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+.nome-funcao-detalhe {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.descricao-funcao-detalhe {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Controles do jogo */
+.controles-jogo {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Feedback */
+.feedback-jogo {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem-feedback {
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 600px;
+}
+
+.mensagem-feedback.sucesso {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.mensagem-feedback.erro {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.mensagem-feedback.dica {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+}
+
+.mensagem-feedback.mostrar {
+    opacity: 1;
+}
+
+/* Progresso */
+.progresso-jogo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Animações */
+@keyframes pulsoCorreto {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes destaqueGrupo {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+    }
+}
+
+.grupo-destacado {
+    animation: destaqueGrupo 1.5s ease-in-out infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-jogo {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .area-jogo {
+        gap: 20px;
+    }
+
+    .molecula-atual {
+        gap: 20px;
+    }
+
+    .cartao-molecula {
+        padding: 20px;
+    }
+
+    .estrutura-molecula {
+        width: 200px;
+        height: 160px;
+    }
+
+    .atomo-organico {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .grid-funcoes {
+        grid-template-columns: 1fr;
+    }
+
+    .botao-funcao {
+        padding: 16px 18px;
+        gap: 12px;
+    }
+
+    .icone-funcao {
+        font-size: 1.8em;
+        width: 40px;
+    }
+
+    .info-funcoes {
+        gap: 15px;
+    }
+
+    .painel-info-funcao,
+    .dicas-jogo {
+        padding: 16px;
+    }
+
+    .controles-jogo {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .estrutura-molecula {
+        width: 180px;
+        height: 140px;
+    }
+
+    .atomo-organico {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+
+    .atomo-hidrogenio {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    .nome-molecula {
+        font-size: 1.5em;
+    }
+
+    .formula-molecula {
+        font-size: 1.2em;
+    }
+}
+ 

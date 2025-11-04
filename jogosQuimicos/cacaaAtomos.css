@@ -1,0 +1,511 @@
+/* Caça aos Átomos - Estilos específicos */
+
+/* Layout geral do jogo */
+.conteudo-jogo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 140px);
+}
+
+.area-jogo {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1024px) {
+    .area-jogo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Informações do átomo alvo */
+.info-atomo-alvo {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.info-atomo-alvo h2 {
+    color: var(--text-primary);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.atomo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.simbolo-atomo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.detalhes-atomo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.nome-atomo {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.numero-atomico,
+.massa-atomica {
+    font-size: 1em;
+    color: var(--text-secondary);
+}
+
+.numero-atomico strong,
+.massa-atomica strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Área de construção do átomo */
+.area-construcao {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 40px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(15px);
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nucleo-atomo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 68, 68, 0.3) 0%, rgba(255, 68, 68, 0.1) 70%, transparent 100%);
+    border: 2px solid rgba(255, 68, 68, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 30px rgba(255, 68, 68, 0.2);
+}
+
+.protons-container,
+.neutrons-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.protons-container {
+    z-index: 2;
+}
+
+.neutrons-container {
+    z-index: 1;
+}
+
+/* Órbitas dos elétrons */
+.orbitas-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+}
+
+.orbita-k,
+.orbita-l {
+    position: absolute;
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orbita-k {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbita-l {
+    width: 380px;
+    height: 380px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Partículas */
+.particula {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+    position: relative;
+}
+
+.particula:hover {
+    transform: scale(1.1);
+    cursor: grab;
+}
+
+.particula:active {
+    cursor: grabbing;
+}
+
+.particula.proton-particula {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.6);
+}
+
+.particula.neutron-particula {
+    background: linear-gradient(135deg, #666666, #333333);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.particula.electron-particula {
+    background: linear-gradient(135deg, #4444ff, #0000cc);
+    box-shadow: 0 2px 8px rgba(68, 68, 255, 0.6);
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+}
+
+/* Partículas disponíveis */
+.particulas-disponiveis {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.particulas-disponiveis h3 {
+    color: var(--text-primary);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.particulas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.particula-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+.contador-particula {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Controles do jogo */
+.controles-jogo {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botao-controle {
+    padding: 16px 32px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.botao-controle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+}
+
+.botao-controle:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.botao-controle.botao-secundario {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+}
+
+.botao-controle.botao-secundario:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+}
+
+/* Feedback do jogo */
+.feedback-jogo {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem-feedback {
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 600px;
+}
+
+.mensagem-feedback.sucesso {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.mensagem-feedback.erro {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.mensagem-feedback.dica {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+}
+
+.mensagem-feedback.mostrar {
+    opacity: 1;
+}
+
+/* Progresso do jogo */
+.progresso-jogo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+.barra-progresso {
+    width: 300px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.progresso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 6px;
+}
+
+.progresso-texto {
+    font-size: 1em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-jogo {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .area-jogo {
+        gap: 20px;
+    }
+
+    .area-construcao {
+        padding: 30px 20px;
+        min-height: 400px;
+    }
+
+    .nucleo-atomo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .orbitas-container {
+        width: 320px;
+        height: 320px;
+    }
+
+    .orbita-k {
+        width: 240px;
+        height: 240px;
+    }
+
+    .orbita-l {
+        width: 300px;
+        height: 300px;
+    }
+
+    .controles-jogo {
+        gap: 12px;
+    }
+
+    .botao-controle {
+        padding: 14px 24px;
+        font-size: 1em;
+    }
+
+    .barra-progresso {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .area-construcao {
+        padding: 20px 15px;
+        min-height: 350px;
+    }
+
+    .nucleo-atomo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .orbitas-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .orbita-k {
+        width: 200px;
+        height: 200px;
+    }
+
+    .orbita-l {
+        width: 260px;
+        height: 260px;
+    }
+
+    .particula {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .particula.electron-particula {
+        width: 16px;
+        height: 16px;
+        font-size: 8px;
+    }
+}
+
+/* Animações */
+@keyframes particulaAdicionada {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.particula.adicionada {
+    animation: particulaAdicionada 0.4s ease-out;
+}
+
+@keyframes pulsoSucesso {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.area-construcao.sucesso {
+    animation: pulsoSucesso 0.6s ease-out;
+}
+
+/* Estados de drag */
+.particula.dragging {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.particula.drag-over {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+}

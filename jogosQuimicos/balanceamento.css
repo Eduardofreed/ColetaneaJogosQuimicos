@@ -1,0 +1,822 @@
+.jogo-container-balanceamento {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.equacao-section {
+    background: rgba(2, 6, 23, 0.9);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+#area-equacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2em;
+    font-weight: 600;
+    gap: 15px;
+    color: var(--text-primary);
+    flex-wrap: wrap;
+}
+
+.coeficiente-slot {
+    width: 60px;
+    height: 70px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    color: var(--text-muted);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.coeficiente-slot.hover {
+    background-color: var(--shadow-medium);
+    border-color: var(--primary-color);
+}
+
+.formula-quimica {
+    padding: 0 10px;
+}
+
+.seta-reacao {
+    color: var(--primary-color);
+    padding: 0 15px;
+}
+
+.coeficientes-section,
+.contagem-section {
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(10, 25, 41, 0.65);
+}
+
+.coeficientes-section h3,
+.contagem-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    color: var(--text-secondary);
+}
+
+#opcoes-coeficientes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.coeficiente-draggable {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: white;
+    cursor: grab;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.coeficiente-draggable:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px var(--shadow-heavy);
+}
+
+#area-contagem {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+}
+
+.contador-atomo {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.5s, background-color 0.5s;
+}
+
+.contador-atomo.balanceado {
+    border-color: var(--success-color);
+    background-color: rgba(0, 255, 136, 0.1);
+}
+
+.contador-atomo .simbolo {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contador-atomo .contagem {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1em;
+}
+
+#botao-proxima:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--background-medium);
+}
+
+.main-jogo {
+    min-height: calc(100vh - 100px);
+    padding: 40px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.jogo-container-balanceamento {
+    max-width: 1200px;
+    gap: 35px;
+}
+
+.info-jogo-section {
+    background: rgba(10, 25, 41, 0.85);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--border-color);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.placar-jogador {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, rgba(33, 212, 253, 0.1) 0%, rgba(183, 33, 255, 0.1) 100%);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.placar-jogador:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-color: var(--primary-color);
+}
+
+.avatar-jogador {
+    font-size: 1.8em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dados-jogador {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nome-jogador {
+    font-size: 1em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.pontos-jogador {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+}
+
+.status-indicador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, rgba(33, 212, 253, 0.15) 0%, rgba(183, 33, 255, 0.15) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.status-texto {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.1em;
+}
+
+.acoes-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-acao {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 35px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px var(--shadow-medium), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.botao-acao:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px var(--shadow-heavy), 0 0 0 2px rgba(255, 255, 255, 0.2);
+    filter: brightness(1.1);
+}
+
+/* Sistema de progresso e níveis */
+.progresso-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    min-width: 200px;
+}
+
+.nivel-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.nivel-label {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.nivel-texto {
+    color: var(--primary-color);
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.barra-progresso {
+    width: 150px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.progresso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.equacao-counter {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.mensagem-inicial-contagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    color: var(--text-secondary);
+    text-align: center;
+    min-height: 80px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+}
+
+
+
+/* Responsividade para progresso */
+@media (max-width: 768px) {
+    .progresso-container {
+        min-width: 150px;
+    }
+
+    .barra-progresso {
+        width: 120px;
+    }
+
+    .status-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .status-indicador {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Responsividade melhorada para dispositivos móveis */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .main-jogo {
+        padding: 35px 20px;
+    }
+
+    .jogo-container-balanceamento {
+        max-width: 1000px;
+        gap: 30px;
+    }
+
+    .info-jogo-section {
+        padding: 25px;
+    }
+
+    .equacao-section {
+        padding: 35px 30px;
+    }
+
+    #area-equacao {
+        font-size: 2em;
+        gap: 12px;
+    }
+
+    .coeficiente-slot {
+        width: 55px;
+        height: 65px;
+        font-size: 0.9em;
+    }
+
+    .coeficiente-draggable {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6em;
+    }
+
+    #opcoes-coeficientes {
+        gap: 15px;
+    }
+
+    .contador-atomo {
+        padding: 12px;
+    }
+
+    .contador-atomo .simbolo {
+        font-size: 1.4em;
+    }
+
+    .botao-acao {
+        padding: 18px 30px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .main-jogo {
+        padding: 30px 15px;
+    }
+
+    .jogo-container-balanceamento {
+        max-width: 100%;
+        gap: 25px;
+    }
+
+    .info-jogo-section {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .info-container {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .placar-jogador {
+        padding: 15px 20px;
+        border-radius: 16px;
+    }
+
+    .status-indicador {
+        padding: 12px 20px;
+        border-radius: 14px;
+    }
+
+    .progresso-container {
+        min-width: 180px;
+    }
+
+    .barra-progresso {
+        width: 140px;
+    }
+
+    .equacao-section {
+        padding: 30px 25px;
+        border-radius: 20px;
+    }
+
+    #area-equacao {
+        font-size: 1.8em;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .coeficiente-slot {
+        width: 50px;
+        height: 60px;
+        font-size: 0.85em;
+        border-radius: 10px;
+    }
+
+    .formula-quimica {
+        padding: 0 8px;
+    }
+
+    .seta-reacao {
+        padding: 0 12px;
+        font-size: 1.2em;
+    }
+
+    .coeficientes-section,
+    .contagem-section {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .coeficientes-section h3,
+    .contagem-section h3 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+
+    #opcoes-coeficientes {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .coeficiente-draggable {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        border-radius: 10px;
+    }
+
+    #area-contagem {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 15px;
+    }
+
+    .contador-atomo {
+        padding: 12px 10px;
+        border-radius: 10px;
+    }
+
+    .contador-atomo .simbolo {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+    }
+
+    .contador-atomo .contagem {
+        font-size: 1em;
+    }
+
+    .acoes-section {
+        margin-top: 10px;
+    }
+
+    .botao-acao {
+        padding: 16px 28px;
+        font-size: 1.1em;
+        border-radius: 16px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-jogo {
+        padding: 25px 12px;
+    }
+
+    .jogo-container-balanceamento {
+        gap: 20px;
+    }
+
+    .info-jogo-section {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .info-container {
+        gap: 15px;
+    }
+
+    .placar-jogador {
+        padding: 12px 16px;
+        border-radius: 14px;
+        gap: 12px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.6em;
+        width: 45px;
+        height: 45px;
+    }
+
+    .dados-jogador {
+        gap: 4px;
+    }
+
+    .nome-jogador {
+        font-size: 0.9em;
+    }
+
+    .pontos-jogador {
+        font-size: 1.4em;
+    }
+
+    .status-indicador {
+        padding: 10px 16px;
+        border-radius: 12px;
+    }
+
+    .status-texto {
+        font-size: 1em;
+    }
+
+    .progresso-container {
+        min-width: 160px;
+    }
+
+    .barra-progresso {
+        width: 120px;
+        height: 7px;
+    }
+
+    .nivel-texto {
+        font-size: 0.9em;
+    }
+
+    .equacao-counter {
+        font-size: 0.8em;
+    }
+
+    .equacao-section {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    #area-equacao {
+        font-size: 1.6em;
+        gap: 8px;
+    }
+
+    .coeficiente-slot {
+        width: 45px;
+        height: 55px;
+        font-size: 0.8em;
+        border-radius: 8px;
+    }
+
+    .formula-quimica {
+        padding: 0 5px;
+    }
+
+    .seta-reacao {
+        padding: 0 8px;
+        font-size: 1.1em;
+    }
+
+    .coeficientes-section,
+    .contagem-section {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .coeficientes-section h3,
+    .contagem-section h3 {
+        font-size: 1.2em;
+        margin-bottom: 12px;
+    }
+
+    #opcoes-coeficientes {
+        gap: 10px;
+    }
+
+    .coeficiente-draggable {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4em;
+        border-radius: 8px;
+    }
+
+    #area-contagem {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 12px;
+    }
+
+    .contador-atomo {
+        padding: 10px 8px;
+        border-radius: 8px;
+    }
+
+    .contador-atomo .simbolo {
+        font-size: 1.2em;
+        margin-bottom: 6px;
+    }
+
+    .contador-atomo .contagem {
+        font-size: 0.9em;
+    }
+
+    .botao-acao {
+        padding: 14px 24px;
+        font-size: 1em;
+        border-radius: 14px;
+        gap: 10px;
+    }
+
+    .botao-texto {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 380px) {
+    .main-jogo {
+        padding: 20px 10px;
+    }
+
+    .jogo-container-balanceamento {
+        gap: 18px;
+    }
+
+    .info-jogo-section {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .info-container {
+        gap: 12px;
+    }
+
+    .placar-jogador {
+        padding: 10px 14px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .avatar-jogador {
+        font-size: 1.5em;
+        width: 40px;
+        height: 40px;
+    }
+
+    .dados-jogador {
+        gap: 3px;
+    }
+
+    .nome-jogador {
+        font-size: 0.85em;
+    }
+
+    .pontos-jogador {
+        font-size: 1.3em;
+    }
+
+    .status-indicador {
+        padding: 8px 14px;
+        border-radius: 10px;
+    }
+
+    .status-texto {
+        font-size: 0.95em;
+    }
+
+    .progresso-container {
+        min-width: 140px;
+    }
+
+    .barra-progresso {
+        width: 100px;
+        height: 6px;
+    }
+
+    .nivel-texto {
+        font-size: 0.85em;
+    }
+
+    .equacao-counter {
+        font-size: 0.75em;
+    }
+
+    .equacao-section {
+        padding: 20px 15px;
+        border-radius: 16px;
+    }
+
+    #area-equacao {
+        font-size: 1.5em;
+        gap: 6px;
+    }
+
+    .coeficiente-slot {
+        width: 40px;
+        height: 50px;
+        font-size: 0.75em;
+        border-radius: 6px;
+    }
+
+    .formula-quimica {
+        padding: 0 3px;
+    }
+
+    .seta-reacao {
+        padding: 0 6px;
+        font-size: 1em;
+    }
+
+    .coeficientes-section,
+    .contagem-section {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .coeficientes-section h3,
+    .contagem-section h3 {
+        font-size: 1.15em;
+        margin-bottom: 10px;
+    }
+
+    #opcoes-coeficientes {
+        gap: 8px;
+    }
+
+    .coeficiente-draggable {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3em;
+        border-radius: 6px;
+    }
+
+    #area-contagem {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 10px;
+    }
+
+    .contador-atomo {
+        padding: 8px 6px;
+        border-radius: 6px;
+    }
+
+    .contador-atomo .simbolo {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+    }
+
+    .contador-atomo .contagem {
+        font-size: 0.85em;
+    }
+
+    .botao-acao {
+        padding: 12px 20px;
+        font-size: 0.95em;
+        border-radius: 12px;
+        gap: 8px;
+    }
+
+    .botao-texto {
+        font-size: 0.95em;
+    }
+}

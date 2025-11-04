@@ -1,0 +1,1190 @@
+    .main-jogo {
+        min-height: calc(100vh - 100px);
+        padding: 45px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .jogo-container {
+        max-width: 1300px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+        margin: 0 auto;
+    }
+
+    .info-jogo-section {
+        background: rgba(2, 6, 23, 0.9);
+        border-radius: 28px;
+        padding: 32px 35px;
+        box-shadow: 0 12px 45px rgba(0, 0, 0, 0.42), 0 0 0 1px var(--border-color);
+        backdrop-filter: blur(22px);
+        border: 1px solid var(--border-color);
+    }
+
+    .info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .placar-container {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+    }
+
+    .placar-jogador {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 25px;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .placar-jogador:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px var(--shadow-medium);
+        border-color: var(--primary-color);
+    }
+
+    .placar-jogador.ativo {
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.25) 0%, rgba(124, 58, 237, 0.25) 100%);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+        transform: scale(1.02);
+    }
+
+    .placar-jogador.ativo .avatar-jogador {
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+    }
+
+    .avatar-jogador {
+        font-size: 1.8em;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .dados-jogador {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .nome-jogador {
+        font-size: 1em;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    .pontos-jogador {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .status-indicador {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 25px;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, rgba(124, 58, 237, 0.12) 100%);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-texto {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 1.1em;
+    }
+
+    .timer-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .timer-display {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .timer-icon {
+        font-size: 1.2em;
+    }
+
+    .timer-text {
+        font-weight: 700;
+        font-size: 1.1em;
+        color: var(--text-primary);
+        font-family: 'Courier New', monospace;
+        min-width: 60px;
+    }
+
+    .timer-text.urgente {
+        color: var(--error-color);
+        animation: timerPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes timerPulse {
+
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.7;
+            transform: scale(1.05);
+        }
+    }
+
+    .tabuleiro-section {
+        background: rgba(2, 6, 23, 0.85);
+        border-radius: 28px;
+        padding: 38px 40px;
+        box-shadow: 0 12px 45px rgba(0, 0, 0, 0.42), 0 0 0 1px var(--border-color);
+        backdrop-filter: blur(22px);
+        border: 1px solid var(--border-color);
+    }
+
+    /* Header fixo para melhor visibilidade dos jogadores */
+    .main-jogo .header-jogo {
+        background: rgba(2, 6, 23, 0.98);
+        backdrop-filter: blur(30px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    /* Área de jogadores sempre visível */
+    .info-jogo-section {
+        background: rgba(2, 6, 23, 0.95);
+        border-radius: 0;
+        padding: 20px 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    .tabuleiro-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) transparent;
+    }
+
+    .acoes-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .botao-acao {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding: 22px 38px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+        border: none;
+        border-radius: 22px;
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 1.25em;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px var(--shadow-medium), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        min-width: 160px;
+    }
+
+    .botao-acao:hover {
+        transform: translateY(-4px) scale(1.025);
+        box-shadow: 0 14px 40px var(--shadow-heavy), 0 0 0 2px rgba(255, 255, 255, 0.1);
+        filter: brightness(1.12);
+    }
+
+    .placar-jogador.cpu-vez {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
+        border-color: gold;
+        box-shadow: 0 0 20px gold;
+    }
+
+    .modo-jogo-section {
+        background: rgba(2, 6, 23, 0.9);
+        border-radius: 26px;
+        padding: 22px 25px;
+        box-shadow: 0 11px 42px rgba(0, 0, 0, 0.42), 0 0 0 1px var(--border-color);
+        backdrop-filter: blur(22px);
+        border: 1px solid var(--border-color);
+        margin-bottom: 22px;
+    }
+
+    .modo-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tipo-ligacao-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+    }
+
+    .tipo-ligacao-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 1.1em;
+    }
+
+    #select-tipo-ligacao {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        font-weight: 500;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 200px;
+    }
+
+    #select-tipo-ligacao:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #select-tipo-ligacao:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+    }
+
+    .opcoes-jogo-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .opcao-modo-jogo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .modo-texto {
+        color: var(--text-primary);
+        font-weight: 500;
+        font-size: 1.1em;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider {
+        background-color: var(--primary-color);
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(26px);
+    }
+
+    .dificuldade-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .dificuldade-label {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    #select-dificuldade {
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #tabuleiro-jogo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 12px;
+        width: 100%;
+        max-width: 100%;
+        perspective: 1000px;
+        animation: tabuleiroFadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0 20px;
+        justify-content: center;
+        place-items: center;
+    }
+
+    @keyframes tabuleiroFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* Scrollbar personalizada para o tabuleiro */
+    .tabuleiro-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .tabuleiro-container::-webkit-scrollbar-track {
+        background: rgba(79, 70, 229, 0.1);
+        border-radius: 4px;
+    }
+
+    .tabuleiro-container::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        border-radius: 4px;
+    }
+
+    .tabuleiro-container::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+    }
+
+    .carta {
+        width: 90px;
+        height: 120px;
+        position: relative;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(.68, -0.55, .27, 1.55), box-shadow 0.2s;
+        box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.15), 0 2px 4px rgba(0, 0, 0, 0.10);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.08);
+        margin-bottom: 3px;
+        animation: cartaFadeIn 0.7s cubic-bezier(.68, -0.55, .27, 1.55);
+        flex-shrink: 0;
+    }
+
+    @keyframes cartaFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8) rotateY(30deg);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .carta:hover:not(.virada):not(.combinada) {
+        box-shadow: 0 10px 25px 0 rgba(79, 70, 229, 0.22), 0 2px 8px rgba(0, 0, 0, 0.12);
+        transform: scale(1.04) rotateY(2deg);
+        z-index: 2;
+    }
+
+    .carta.virada {
+        transform: rotateY(180deg);
+    }
+
+    .carta.combinada {
+        box-shadow: 0 0 40px var(--primary-color), 0 0 0 2px var(--primary-color), 0 2px 8px rgba(0, 0, 0, 0.12);
+        transform: scale(1.08);
+        filter: brightness(1.12) saturate(1.05);
+    }
+
+    .carta.virada.combinada {
+        transform: rotateY(180deg) scale(1.08);
+    }
+
+    .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10);
+        backface-visibility: hidden;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .verso {
+        background-image: url('imagens/verso-institucional.png');
+        background-size: cover;
+        background-position: center;
+        background-color: #4a6da7;
+    }
+
+    .frente {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotateY(180deg);
+        border: 2px solid #21d4fd44;
+    }
+
+    .curiosidade-container-oculto {
+        display: none;
+    }
+
+    .curiosidade-container-visivel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 25, 41, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 200;
+        backdrop-filter: blur(8px);
+        animation: fadeIn 0.5s ease;
+    }
+
+    #curiosidade-popup {
+        background: linear-gradient(135deg, var(--background-medium) 0%, var(--background-light) 100%);
+        padding: 30px 40px;
+        border-radius: 20px;
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 10px 50px var(--shadow-heavy);
+        max-width: 500px;
+        text-align: center;
+        transform: scale(1);
+        animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #curiosidade-titulo {
+        font-size: 1.8em;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    #curiosidade-texto {
+        font-size: 1.1em;
+        color: var(--text-primary);
+        line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes zoomIn {
+        from {
+            transform: scale(0.7);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .tabuleiro-section {
+        background: rgba(10, 25, 41, 0.80);
+    }
+
+    .curiosidade-container-visivel {
+        background-color: rgba(10, 25, 41, 0.80);
+    }
+
+    .tipo-ligacao-container {
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Responsividade melhorada para memória */
+    @media (max-width: 1200px) {
+        .jogo-container {
+            max-width: 1100px;
+            gap: 32px;
+        }
+
+        .carta {
+            width: 75px;
+            height: 105px;
+        }
+
+        #tabuleiro-jogo {
+            grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+            gap: 10px;
+        }
+
+        .info-jogo-section {
+            padding: 28px 30px;
+        }
+
+        .tabuleiro-section {
+            padding: 32px 35px;
+        }
+    }
+
+    /* Tablets e dispositivos médios (769px - 1024px) */
+    @media (max-width: 1024px) and (min-width: 769px) {
+        .main-jogo {
+            padding: 40px 25px;
+        }
+
+        .jogo-container {
+            max-width: 950px;
+            gap: 35px;
+        }
+
+        .info-jogo-section {
+            padding: 30px 32px;
+            border-radius: 26px;
+        }
+
+        .info-container {
+            gap: 30px;
+        }
+
+        .placar-container {
+            gap: 30px;
+        }
+
+        .placar-jogador {
+            padding: 22px 28px;
+            border-radius: 18px;
+        }
+
+        .status-indicador {
+            padding: 14px 24px;
+            border-radius: 15px;
+        }
+
+        .timer-display {
+            padding: 14px 22px;
+            border-radius: 15px;
+        }
+
+        .modo-jogo-section {
+            padding: 22px;
+            border-radius: 24px;
+        }
+
+        .tabuleiro-section {
+            padding: 30px 28px;
+            border-radius: 26px;
+        }
+
+        #tabuleiro-jogo {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .carta {
+            width: 70px;
+            height: 98px;
+            border-radius: 12px;
+        }
+
+        .acoes-section {
+            gap: 18px;
+        }
+
+        .botao-acao {
+            padding: 20px 32px;
+            font-size: 1.2em;
+            border-radius: 18px;
+        }
+    }
+
+    /* Dispositivos móveis médios (481px - 768px) */
+    @media (max-width: 768px) and (min-width: 481px) {
+        .main-jogo {
+            padding: 30px 18px;
+        }
+
+        .jogo-container {
+            gap: 25px;
+        }
+
+        .info-jogo-section {
+            padding: 22px 20px;
+            border-radius: 20px;
+        }
+
+        .info-container {
+            flex-direction: column;
+            gap: 18px;
+            text-align: center;
+        }
+
+        .placar-container {
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .placar-jogador {
+            padding: 16px 20px;
+            border-radius: 16px;
+            gap: 12px;
+        }
+
+        .avatar-jogador {
+            font-size: 1.6em;
+            width: 45px;
+            height: 45px;
+        }
+
+        .dados-jogador {
+            gap: 4px;
+        }
+
+        .nome-jogador {
+            font-size: 0.95em;
+        }
+
+        .pontos-jogador {
+            font-size: 1.4em;
+        }
+
+        .status-container {
+            justify-content: center;
+        }
+
+        .status-indicador {
+            padding: 12px 18px;
+            border-radius: 14px;
+        }
+
+        .status-texto {
+            font-size: 1em;
+        }
+
+        .timer-display {
+            padding: 10px 18px;
+            border-radius: 14px;
+        }
+
+        .timer-text {
+            font-size: 1.1em;
+        }
+
+        .modo-jogo-section {
+            padding: 18px 16px;
+            border-radius: 18px;
+        }
+
+        .modo-container {
+            gap: 16px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tipo-ligacao-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        #select-tipo-ligacao {
+            padding: 12px 15px;
+            font-size: 1em;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .opcoes-jogo-container {
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .opcao-modo-jogo {
+            gap: 10px;
+        }
+
+        .modo-texto {
+            font-size: 1em;
+        }
+
+        #select-dificuldade {
+            padding: 10px 12px;
+            font-size: 0.95em;
+            border-radius: 10px;
+        }
+
+        .tabuleiro-section {
+            padding: 25px 20px;
+            border-radius: 20px;
+        }
+
+        .tabuleiro-container {
+            padding: 8px 0;
+        }
+
+        #tabuleiro-jogo {
+            grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
+            gap: 10px;
+            padding: 0 15px;
+        }
+
+        .carta {
+            width: 65px;
+            height: 91px;
+            border-radius: 10px;
+        }
+
+        .carta-conteudo {
+            border-radius: 8px;
+        }
+
+        .simbolo-carta {
+            font-size: 1.8em;
+        }
+
+        .nome-carta {
+            font-size: 0.7em;
+        }
+
+        .numero-carta {
+            font-size: 0.8em;
+        }
+
+        .acoes-section {
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .botao-acao {
+            padding: 16px 28px;
+            font-size: 1.1em;
+            border-radius: 16px;
+            min-width: 130px;
+        }
+    }
+
+    /* Dispositivos móveis pequenos (até 480px) */
+    @media (max-width: 480px) {
+        .main-jogo {
+            padding: 25px 15px;
+        }
+
+        .jogo-container {
+            gap: 20px;
+        }
+
+        .info-jogo-section {
+            padding: 18px 16px;
+            border-radius: 18px;
+        }
+
+        .info-container {
+            gap: 15px;
+        }
+
+        .placar-container {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .placar-jogador {
+            padding: 14px 16px;
+            border-radius: 14px;
+            gap: 10px;
+        }
+
+        .avatar-jogador {
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+        }
+
+        .dados-jogador {
+            gap: 3px;
+        }
+
+        .nome-jogador {
+            font-size: 0.9em;
+        }
+
+        .pontos-jogador {
+            font-size: 1.3em;
+        }
+
+        .status-indicador {
+            padding: 10px 15px;
+            border-radius: 12px;
+        }
+
+        .status-texto {
+            font-size: 0.95em;
+        }
+
+        .timer-display {
+            padding: 8px 15px;
+            border-radius: 12px;
+        }
+
+        .timer-text {
+            font-size: 1em;
+        }
+
+        .timer-icon {
+            font-size: 1.1em;
+        }
+
+        .modo-jogo-section {
+            padding: 15px 12px;
+            border-radius: 16px;
+        }
+
+        .modo-container {
+            gap: 14px;
+        }
+
+        #select-tipo-ligacao {
+            padding: 10px 12px;
+            font-size: 0.95em;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 280px;
+        }
+
+        .opcoes-jogo-container {
+            gap: 15px;
+        }
+
+        .modo-texto {
+            font-size: 0.95em;
+        }
+
+        #select-dificuldade {
+            padding: 8px 10px;
+            font-size: 0.9em;
+            border-radius: 8px;
+        }
+
+        .tabuleiro-section {
+            padding: 20px 15px;
+            border-radius: 18px;
+        }
+
+        .tabuleiro-container {
+            padding: 5px 0;
+        }
+
+        #tabuleiro-jogo {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 8px;
+            padding: 0 10px;
+        }
+
+        .carta {
+            width: 70px;
+            height: 98px;
+            border-radius: 8px;
+        }
+
+        .carta-conteudo {
+            border-radius: 6px;
+        }
+
+        .simbolo-carta {
+            font-size: 1.6em;
+        }
+
+        .nome-carta {
+            font-size: 0.65em;
+        }
+
+        .numero-carta {
+            font-size: 0.75em;
+        }
+
+        .acoes-section {
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .botao-acao {
+            padding: 14px 24px;
+            font-size: 1.05em;
+            border-radius: 14px;
+            min-width: 120px;
+            width: 100%;
+            max-width: 200px;
+        }
+    }
+
+    /* Dispositivos muito pequenos (até 380px) */
+    @media (max-width: 380px) {
+        .main-jogo {
+            padding: 20px 12px;
+        }
+
+        .jogo-container {
+            gap: 18px;
+        }
+
+        .info-jogo-section {
+            padding: 15px 12px;
+            border-radius: 16px;
+        }
+
+        .info-container {
+            gap: 12px;
+        }
+
+        .placar-container {
+            gap: 12px;
+        }
+
+        .placar-jogador {
+            padding: 12px 14px;
+            border-radius: 12px;
+            gap: 8px;
+        }
+
+        .avatar-jogador {
+            font-size: 1.4em;
+            width: 38px;
+            height: 38px;
+        }
+
+        .nome-jogador {
+            font-size: 0.85em;
+        }
+
+        .pontos-jogador {
+            font-size: 1.2em;
+        }
+
+        .status-indicador {
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .status-texto {
+            font-size: 0.9em;
+        }
+
+        .timer-display {
+            padding: 7px 12px;
+            border-radius: 10px;
+        }
+
+        .timer-text {
+            font-size: 0.95em;
+        }
+
+        .modo-jogo-section {
+            padding: 12px 10px;
+            border-radius: 14px;
+        }
+
+        .modo-container {
+            gap: 12px;
+        }
+
+        #select-tipo-ligacao {
+            padding: 8px 10px;
+            font-size: 0.9em;
+            width: 95%;
+        }
+
+        .opcoes-jogo-container {
+            gap: 12px;
+        }
+
+        .modo-texto {
+            font-size: 0.9em;
+        }
+
+        #select-dificuldade {
+            padding: 7px 8px;
+            font-size: 0.85em;
+        }
+
+        .tabuleiro-section {
+            padding: 18px 12px;
+            border-radius: 16px;
+        }
+
+        #tabuleiro-jogo {
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 6px;
+            padding: 0 8px;
+        }
+
+        .carta {
+            width: 70px;
+            height: 90px;
+            border-radius: 6px;
+        }
+
+        .carta-conteudo {
+            border-radius: 4px;
+        }
+
+        .simbolo-carta {
+            font-size: 1.4em;
+        }
+
+        .nome-carta {
+            font-size: 0.6em;
+        }
+
+        .numero-carta {
+            font-size: 0.7em;
+        }
+
+        .botao-acao {
+            padding: 12px 20px;
+            font-size: 1em;
+            min-width: 110px;
+        }
+    }
+
+    /* Melhorias para toque em dispositivos móveis */
+    @media (hover: none) and (pointer: coarse) {
+        .carta {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .carta:active {
+            transform: scale(0.95);
+        }
+
+        .botao-acao {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .placar-jogador:active,
+        .status-indicador:active,
+        .timer-display:active {
+            transform: scale(0.98);
+        }
+
+        /* Aumentar área de toque para elementos interativos */
+        .switch {
+            min-width: 50px;
+            min-height: 30px;
+        }
+
+        #select-tipo-ligacao,
+        #select-dificuldade {
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+    }

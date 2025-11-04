@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovens Talentos - Super Trunfo Químico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="superTrunfo.css">
+</head>
+
+<body>
+    <div id="fundo-quimico"></div>
+    <header class="header-jogo">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-jt">
+                    <div class="logo-bolinha"><span>JT</span></div>
+                    <div class="logo-texto">
+                        <h2>Jovens Talentos</h2>
+                        <p>Super Trunfo Químico</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav-jogo">
+                <a href="index.html" class="botao-voltar">Voltar ao Menu</a>
+            </nav>
+        </div>
+    </header>
+    <div id="regras-container" class="regras-container-oculto">
+        <div id="regras-popup">
+            <h3 id="regras-titulo">Como Jogar Super Trunfo Químico</h3>
+            <div class="regras-conteudo">
+                <div class="regra-item">
+                    <h4>Objetivo do Jogo</h4>
+                    <p>Compare propriedades dos elementos químicos e vença rodadas para marcar pontos. Quem fizer mais
+                        pontos ao final vence!</p>
+                </div>
+
+                <div class="regra-item">
+                    <h4>As Cartas</h4>
+                    <p>Cada carta representa um elemento químico com suas propriedades reais: eletronegatividade, raio
+                        atômico, massa atômica, ponto de fusão, densidade e energia de ionização.</p>
+                </div>
+
+                <div class="regra-item">
+                    <h4>O Super Trunfo</h4>
+                    <p>O <strong>Flúor</strong> é o Super Trunfo! Ele sempre vence qualquer outro elemento no atributo
+                        <em>eletronegatividade</em>, pois possui o maior valor desse atributo.
+                    </p>
+                </div>
+
+                <div class="regra-item">
+                    <h4>Regras de Comparação</h4>
+                    <div class="regras-detalhes">
+                        <p><strong>Maior valor vence:</strong> Eletronegatividade, Massa Atômica, Densidade, Energia de
+                            Ionização</p>
+                        <p><strong>Menor valor vence:</strong> Raio Atômico, Ponto de Fusão</p>
+                        <p><em>Exemplo:</em> No raio atômico, o elemento com menor raio vence a rodada.</p>
+                    </div>
+                </div>
+
+                <div class="regra-item">
+                    <h4>Sistema de Dicas</h4>
+                    <p>Você tem 5 dicas por partida! Cada dica oferece informações estratégicas sobre sua carta atual e
+                        conceitos químicos educativos.</p>
+                </div>
+
+                <div class="regra-item">
+                    <h4>Vitória</h4>
+                    <p>O jogo termina quando todas as cartas forem usadas. Quem tiver mais pontos vence! Em caso de
+                        empate, é declarada uma partida empatada.</p>
+                </div>
+
+                <div class="regra-exemplo">
+                    <h4>Conceitos que você aprende</h4>
+                    <ul>
+                        <li><strong>Eletronegatividade:</strong> Capacidade de atrair elétrons</li>
+                        <li><strong>Raio atômico:</strong> Tamanho do átomo</li>
+                        <li><strong>Massa atômica:</strong> Peso médio dos átomos</li>
+                        <li><strong>Ponto de fusão:</strong> Temperatura para virar líquido</li>
+                        <li><strong>Densidade:</strong> Massa por unidade de volume</li>
+                        <li><strong>Energia de ionização:</strong> Energia para remover elétrons</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="fechar-regras" class="botao-fechar-regras">Entendi!</button>
+        </div>
+    </div>
+
+    <main class="main-jogo">
+        <div class="jogo-container">
+            <section class="info-jogo-section">
+                <div class="info-container">
+                    <div class="placar-container">
+                        <div class="placar-jogador">
+                            <div class="avatar-jogador">👤</div>
+                            <div class="dados-jogador">
+                                <span class="nome-jogador" id="label-j1">Equipe</span>
+                                <span class="pontos-jogador" id="pontos-j1">0</span>
+                            </div>
+                        </div>
+                        <div class="placar-jogador">
+                            <div class="avatar-jogador">🤖</div>
+                            <div class="dados-jogador">
+                                <span class="nome-jogador" id="label-j2">CPU</span>
+                                <span class="pontos-jogador" id="pontos-j2">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-indicador">
+                            <span class="status-texto" id="status-texto">Escolha um atributo para a equipe</span>
+                        </div>
+                        <button id="botao-dica" class="botao-dica" title="Sugestão de melhor atributo"><span
+                                class="botao-texto">Dica (5)</span></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="tabuleiro-section">
+            <div id="area-jogo">
+                <div id="carta-jogador" class="area-carta">
+                    <h3>Carta da Equipe</h3>
+                    <div id="carta-jogador-elemento" class="carta-super-trunfo"></div>
+                </div>
+                <div id="area-atributos">
+                    <h3>Escolha um Atributo</h3>
+                    <div id="botoes-atributos">
+                        <button class="botao-atributo" data-atributo="eletronegatividade">Eletronegatividade</button>
+                        <button class="botao-atributo" data-atributo="raio-atomico">Raio Atômico</button>
+                        <button class="botao-atributo" data-atributo="massa-atomica">Massa Atômica</button>
+                        <button class="botao-atributo" data-atributo="ponto-fusao">Ponto de Fusão</button>
+                        <button class="botao-atributo" data-atributo="densidade">Densidade</button>
+                        <button class="botao-atributo" data-atributo="energia-ionizacao">Energia de
+                            Ionização</button>
+                    </div>
+                </div>
+                <div id="carta-cpu" class="area-carta">
+                    <h3>Carta da CPU</h3>
+                    <div id="carta-cpu-elemento" class="carta-super-trunfo carta-oculta"></div>
+                </div>
+            </div>
+        </section>
+        <section class="acoes-section">
+            <button id="botao-reiniciar" class="botao-acao"><span class="botao-texto">Novo Jogo</span></button>
+            <button id="botao-regras" class="botao-acao"><span class="botao-texto">Como Jogar</span></button>
+            <button id="botao-historico" class="botao-acao"><span class="botao-texto">Histórico</span></button>
+        </section>
+    </main>
+    <script src="sons.js"></script>
+    <script src="superTrunfo.js"></script>
+</body>
+
+</html>

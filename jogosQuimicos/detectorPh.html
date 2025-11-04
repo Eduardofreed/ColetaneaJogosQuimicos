@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de pH - Jovens Talentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="detectorPh.css">
+</head>
+
+<body>
+    <header class="header-jogo">
+        <div class="header-container">
+            <a href="index.html" class="botao-voltar" id="botao-voltar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Voltar
+            </a>
+            <div class="titulo-jogo-header">
+                <h1>Detector de pH</h1>
+                <p class="subtitulo-jogo">Identifique se as substâncias são ácidas, básicas ou neutras!</p>
+            </div>
+            <div class="pontuacao-jogo">
+                <span class="pontos" id="pontuacao">0</span>
+                <span class="rotulo-pontos">pontos</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-jogo">
+        <div class="area-jogo">
+            <div class="substancia-atual">
+                <h2>Análise a substância:</h2>
+                <div class="cartao-substancia" id="cartao-substancia">
+                    <div class="nome-substancia" id="nome-substancia">Água</div>
+                    <div class="formula-substancia" id="formula-substancia">H₂O</div>
+                    <div class="aplicacao-substancia" id="aplicacao-substancia">Líquido incolor e inodoro</div>
+                </div>
+
+                <div class="detector-ph">
+                    <h3>Detector de pH</h3>
+                    <div class="indicador-ph" id="indicador-ph">
+                        <div class="escala-ph">
+                            <div class="marcador" data-ph="0">0</div>
+                            <div class="marcador" data-ph="1">1</div>
+                            <div class="marcador" data-ph="2">2</div>
+                            <div class="marcador" data-ph="3">3</div>
+                            <div class="marcador" data-ph="4">4</div>
+                            <div class="marcador" data-ph="5">5</div>
+                            <div class="marcador" data-ph="6">6</div>
+                            <div class="marcador" data-ph="7">7</div>
+                            <div class="marcador" data-ph="8">8</div>
+                            <div class="marcador" data-ph="9">9</div>
+                            <div class="marcador" data-ph="10">10</div>
+                            <div class="marcador" data-ph="11">11</div>
+                            <div class="marcador" data-ph="12">12</div>
+                            <div class="marcador" data-ph="13">13</div>
+                            <div class="marcador" data-ph="14">14</div>
+                        </div>
+                        <div class="agulha-ph" id="agulha-ph"></div>
+                        <div class="papel-tornassol" id="papel-tornassol">
+                            <div class="cor-indicador" id="cor-indicador"></div>
+                        </div>
+                    </div>
+
+                    <div class="resultado-ph">
+                        <span class="rotulo-resultado">Resultado:</span>
+                        <span class="valor-ph" id="valor-ph">?</span>
+                        <span class="classificacao-ph" id="classificacao-ph">Aguardando análise</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="opcoes-resposta">
+                <h3>Selecione a classificação:</h3>
+                <div class="botoes-classificacao">
+                    <button class="botao-classificacao" data-tipo="acida" id="botao-acida">
+                        <div class="icone-classificacao">🧪</div>
+                        <div class="texto-classificacao">
+                            <span class="titulo-classificacao">Ácida</span>
+                            <span class="descricao-classificacao">pH < 7</span>
+                        </div>
+                    </button>
+
+                    <button class="botao-classificacao" data-tipo="neutra" id="botao-neutra">
+                        <div class="icone-classificacao">⚖️</div>
+                        <div class="texto-classificacao">
+                            <span class="titulo-classificacao">Neutra</span>
+                            <span class="descricao-classificacao">pH = 7</span>
+                        </div>
+                    </button>
+
+                    <button class="botao-classificacao" data-tipo="basica" id="botao-basica">
+                        <div class="icone-classificacao">🧴</div>
+                        <div class="texto-classificacao">
+                            <span class="titulo-classificacao">Básica</span>
+                            <span class="descricao-classificacao">pH > 7</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="painel-info">
+                <div class="dica-jogo">
+                    <h3>💡 Dica</h3>
+                    <p id="texto-dica">Clique em uma classificação para analisar a substância!</p>
+                </div>
+
+                <div class="info-ph">
+                    <h3>📚 Sobre pH</h3>
+                    <ul>
+                        <li><strong>Ácido:</strong> pH menor que 7 (ex: vinagre, limão)</li>
+                        <li><strong>Neutro:</strong> pH igual a 7 (ex: água pura)</li>
+                        <li><strong>Básico:</strong> pH maior que 7 (ex: sabão, leite de magnésia)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="controles-jogo">
+            <button class="botao-controle" id="botao-analisar">Analisar Substância</button>
+            <button class="botao-controle botao-secundario" id="botao-proxima">Próxima Substância</button>
+            <button class="botao-controle botao-secundario" id="botao-dica">Mostrar Dica</button>
+        </div>
+
+        <div class="feedback-jogo" id="feedback">
+            <div class="mensagem-feedback" id="mensagem-feedback"></div>
+        </div>
+
+        <div class="progresso-jogo">
+            <div class="barra-progresso">
+                <div class="progresso-fill" id="barra-progresso"></div>
+            </div>
+            <span class="progresso-texto" id="progresso-texto">Substância 1 de 10</span>
+        </div>
+    </main>
+
+    <script src="sons.js"></script>
+    <script src="detectorPh.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,601 @@
+/* Transformações da Matéria - Estados Físicos */
+
+/* Layout geral do jogo */
+.conteudo-jogo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 140px);
+}
+
+.area-jogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .area-jogo {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
+
+/* Substância atual */
+.substancia-atual {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .substancia-atual {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.cartao-substancia {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.cartao-substancia:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nome-substancia {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.formula-substancia {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.estado-atual,
+.temperatura-atual {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.estado-atual {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Controles de temperatura */
+.controles-temperatura {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(15px);
+}
+
+.controles-temperatura h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.painel-controle {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.botao-temperatura {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.botao-temperatura:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+}
+
+.botao-temperatura:active {
+    transform: translateY(0);
+}
+
+.botao-temperatura:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.display-temperatura {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.barra-temperatura {
+    width: 300px;
+    height: 20px;
+    background: linear-gradient(90deg, #4a90e2 0%, #7dd3f0 50%, #ff6b6b 100%);
+    border-radius: 10px;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+.nivel-temperatura {
+    height: 100%;
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6, #60a5fa);
+    width: 50%;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.nivel-temperatura::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+}
+
+.marcador-zero {
+    position: absolute;
+    left: 50%;
+    top: -25px;
+    transform: translateX(-50%);
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.valor-temperatura {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+/* Visualização da substância */
+.visualizacao-substancia {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.visualizacao-substancia h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin: 0;
+}
+
+.recipiente {
+    width: 250px;
+    height: 300px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 0 0 20px 20px;
+    border: 3px solid rgba(79, 70, 229, 0.3);
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.conteudo-substancia {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: center;
+    padding: 20px;
+    gap: 8px;
+}
+
+.particula-materia {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.particula-materia.solida {
+    background: linear-gradient(145deg, #e5e7eb, #9ca3af);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: vibracao-solida 1s ease-in-out infinite;
+}
+
+.particula-materia.liquida {
+    background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
+    animation: movimento-liquido 2s ease-in-out infinite;
+}
+
+.particula-materia.gasosa {
+    background: linear-gradient(145deg, #10b981, #059669);
+    box-shadow: 0 2px 12px rgba(16, 185, 129, 0.6);
+    animation: movimento-gasoso 1.5s ease-in-out infinite;
+}
+
+@keyframes vibracao-solida {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+@keyframes movimento-liquido {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(10px, -5px) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(5px, -10px) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(-5px, -5px) rotate(-5deg);
+    }
+}
+
+@keyframes movimento-gasoso {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(15px, -20px) scale(1.1) rotate(10deg);
+    }
+
+    50% {
+        transform: translate(10px, -30px) scale(0.9) rotate(5deg);
+    }
+
+    75% {
+        transform: translate(-10px, -25px) scale(1.05) rotate(-10deg);
+    }
+}
+
+.nivel-substancia {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.8), rgba(59, 130, 246, 0.6));
+    transition: height 0.5s ease;
+    border-radius: 0 0 17px 17px;
+}
+
+/* Indicadores visuais */
+.indicadores-visuais {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.indicador-particulas,
+.indicador-forcas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rotulo-indicador {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.barra-indicador {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fill-indicador {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 50%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.valor-indicador {
+    font-size: 0.9em;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Estados possíveis */
+.estados-possiveis {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.estados-possiveis h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cartoes-estados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.cartao-estado {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.cartao-estado:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+
+.cartao-estado.ativo {
+    background: rgba(79, 70, 229, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+}
+
+.icone-estado {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.info-estado h4 {
+    color: var(--text-primary);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info-estado p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Controles do jogo */
+.controles-jogo {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Feedback */
+.feedback-jogo {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem-feedback {
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 600px;
+}
+
+.mensagem-feedback.sucesso {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.mensagem-feedback.erro {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.mensagem-feedback.dica {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+}
+
+.mensagem-feedback.mostrar {
+    opacity: 1;
+}
+
+/* Progresso */
+.progresso-jogo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-jogo {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .area-jogo {
+        gap: 20px;
+    }
+
+    .substancia-atual {
+        gap: 20px;
+    }
+
+    .painel-controle {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .barra-temperatura {
+        width: 250px;
+    }
+
+    .recipiente {
+        width: 200px;
+        height: 250px;
+    }
+
+    .cartoes-estados {
+        grid-template-columns: 1fr;
+    }
+
+    .cartao-estado {
+        padding: 15px;
+    }
+
+    .icone-estado {
+        font-size: 2.5em;
+    }
+
+    .controles-jogo {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-temperatura {
+        width: 200px;
+    }
+
+    .recipiente {
+        width: 180px;
+        height: 220px;
+    }
+
+    .valor-temperatura {
+        font-size: 1.3em;
+    }
+
+    .nome-substancia {
+        font-size: 1.6em;
+    }
+
+    .formula-substancia {
+        font-size: 1.3em;
+    }
+}
+
+/* Animações especiais */
+@keyframes transicaoEstado {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.recipiente.transicao {
+    animation: transicaoEstado 0.8s ease-out;
+}
+
+@keyframes pulsoCorreto {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.cartao-estado.correto {
+    animation: pulsoCorreto 0.6s ease-out;
+}

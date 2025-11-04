@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformações da Matéria - Jovens Talentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="transformacoesMateria.css">
+</head>
+
+<body>
+    <header class="header-jogo">
+        <div class="header-container">
+            <a href="index.html" class="botao-voltar" id="botao-voltar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+                Voltar
+            </a>
+            <div class="titulo-jogo-header">
+                <h1>Transformações da Matéria</h1>
+                <p class="subtitulo-jogo">Aqueça ou resfrie substâncias para ver mudanças de estado!</p>
+            </div>
+            <div class="pontuacao-jogo">
+                <span class="pontos" id="pontuacao">0</span>
+                <span class="rotulo-pontos">pontos</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="conteudo-jogo">
+        <div class="area-jogo">
+            <div class="substancia-atual">
+                <h2>Substância:</h2>
+                <div class="cartao-substancia" id="cartao-substancia">
+                    <div class="nome-substancia" id="nome-substancia">Água</div>
+                    <div class="formula-substancia" id="formula-substancia">H₂O</div>
+                    <div class="estado-atual" id="estado-atual">Estado: Sólido</div>
+                    <div class="temperatura-atual" id="temperatura-atual">Temperatura: -10°C</div>
+                </div>
+
+                <div class="controles-temperatura">
+                    <h3>Controle a Temperatura:</h3>
+                    <div class="painel-controle">
+                        <button class="botao-temperatura" id="botao-resfriar">
+                            ❄️ Resfriar
+                        </button>
+                        <div class="display-temperatura">
+                            <div class="barra-temperatura">
+                                <div class="nivel-temperatura" id="nivel-temperatura"></div>
+                                <div class="marcador-zero">0°C</div>
+                            </div>
+                            <div class="valor-temperatura" id="valor-temperatura">-10°C</div>
+                        </div>
+                        <button class="botao-temperatura" id="botao-aquecer">
+                            🔥 Aquecer
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualizacao-substancia">
+                <h3>Observação:</h3>
+                <div class="recipiente" id="recipiente">
+                    <div class="conteudo-substancia" id="conteudo-substancia">
+                    </div>
+                    <div class="nivel-substancia" id="nivel-substancia"></div>
+                </div>
+
+                <div class="indicadores-visuais">
+                    <div class="indicador-particulas" id="indicador-particulas">
+                        <span class="rotulo-indicador">Movimento das Partículas:</span>
+                        <div class="barra-indicador">
+                            <div class="fill-indicador" id="fill-particulas"></div>
+                        </div>
+                        <span class="valor-indicador" id="valor-particulas">Lento</span>
+                    </div>
+
+                    <div class="indicador-forcas" id="indicador-forcas">
+                        <span class="rotulo-indicador">Forças Intermoleculares:</span>
+                        <div class="barra-indicador">
+                            <div class="fill-indicador" id="fill-forcas"></div>
+                        </div>
+                        <span class="valor-indicador" id="valor-forcas">Fortes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="estados-possiveis">
+                <h3>Estados da Matéria:</h3>
+                <div class="cartoes-estados">
+                    <div class="cartao-estado" data-estado="solido">
+                        <div class="icone-estado">🧊</div>
+                        <div class="info-estado">
+                            <h4>Sólido</h4>
+                            <p>Partículas vibram no lugar, forças fortes</p>
+                        </div>
+                    </div>
+
+                    <div class="cartao-estado" data-estado="liquido">
+                        <div class="icone-estado">💧</div>
+                        <div class="info-estado">
+                            <h4>Líquido</h4>
+                            <p>Partículas se movem livremente, forças médias</p>
+                        </div>
+                    </div>
+
+                    <div class="cartao-estado" data-estado="gasoso">
+                        <div class="icone-estado">💨</div>
+                        <div class="info-estado">
+                            <h4>Gasoso</h4>
+                            <p>Partículas se movem rapidamente, forças fracas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controles-jogo">
+            <button class="botao-controle" id="botao-verificar">Verificar Estado</button>
+            <button class="botao-controle botao-secundario" id="botao-proxima">Próxima Substância</button>
+            <button class="botao-controle botao-secundario" id="botao-dica">Ver Pontos de Fusão</button>
+        </div>
+
+        <div class="feedback-jogo" id="feedback">
+            <div class="mensagem-feedback" id="mensagem-feedback"></div>
+        </div>
+
+        <div class="progresso-jogo">
+            <div class="barra-progresso">
+                <div class="progresso-fill" id="barra-progresso"></div>
+            </div>
+            <span class="progresso-texto" id="progresso-texto">Substância 1 de 8</span>
+        </div>
+    </main>
+
+    <script src="sons.js"></script>
+    <script src="transformacoesMateria.js"></script>
+</body>
+
+</html>

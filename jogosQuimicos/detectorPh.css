@@ -1,0 +1,546 @@
+/* Detector de pH - Estilos específicos */
+
+/* Layout geral do jogo */
+.conteudo-jogo {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: calc(100vh - 140px);
+}
+
+.area-jogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .area-jogo {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
+
+/* Substância atual */
+.substancia-atual {
+    grid-column: 1 / -1;
+}
+
+.substancia-atual h2 {
+    color: var(--text-primary);
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cartao-substancia {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.cartao-substancia:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nome-substancia {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.formula-substancia {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-family: 'Courier New', monospace;
+}
+
+.aplicacao-substancia {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Detector de pH */
+.detector-ph {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(15px);
+}
+
+.detector-ph h3 {
+    color: var(--text-primary);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.indicador-ph {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(180deg, #ff6b6b 0%, #ffa500 20%, #ffff00 40%, #90EE90 60%, #87CEEB 80%, #9370DB 100%);
+    border-radius: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.escala-ph {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.marcador {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.agulha-ph {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 160px;
+    background: linear-gradient(180deg, #ff0000, #ffff00, #00ff00, #0080ff, #8000ff);
+    border-radius: 2px;
+    transform-origin: bottom center;
+    transform: translateX(-50%) translateY(-100%) rotate(90deg);
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.papel-tornassol {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.cor-indicador {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #cccccc;
+    transition: background-color 0.5s ease;
+}
+
+/* Estados do papel tornassol */
+.papel-tornassol.acido .cor-indicador {
+    background: linear-gradient(45deg, #ff6b6b, #ff4444);
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+.papel-tornassol.neutro .cor-indicador {
+    background: linear-gradient(45deg, #ffff00, #ffd700);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+.papel-tornassol.basico .cor-indicador {
+    background: linear-gradient(45deg, #90EE90, #32CD32);
+    box-shadow: 0 0 15px rgba(144, 238, 144, 0.5);
+}
+
+.resultado-ph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.rotulo-resultado {
+    font-size: 1em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.valor-ph {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: 'Courier New', monospace;
+}
+
+.classificacao-ph {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Opções de resposta */
+.opcoes-resposta {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.opcoes-resposta h3 {
+    color: var(--text-primary);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.botoes-classificacao {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.botao-classificacao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(79, 70, 229, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.botao-classificacao:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+
+.botao-classificacao.ativo {
+    background: rgba(79, 70, 229, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+}
+
+.icone-classificacao {
+    font-size: 2em;
+    width: 50px;
+    text-align: center;
+}
+
+.texto-classificacao {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.titulo-classificacao {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.descricao-classificacao {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Painel de informações */
+.painel-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .painel-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.dica-jogo,
+.info-ph {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(79, 70, 229, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.dica-jogo h3,
+.info-ph h3 {
+    color: var(--text-primary);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dica-jogo p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.info-ph ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-ph li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.5;
+    padding-left: 15px;
+    position: relative;
+}
+
+.info-ph li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.info-ph strong {
+    color: var(--text-primary);
+}
+
+/* Controles do jogo */
+.controles-jogo {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Feedback */
+.feedback-jogo {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mensagem-feedback {
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 600px;
+}
+
+.mensagem-feedback.sucesso {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.mensagem-feedback.erro {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.mensagem-feedback.dica {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+}
+
+.mensagem-feedback.mostrar {
+    opacity: 1;
+}
+
+/* Progresso */
+.progresso-jogo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-jogo {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .area-jogo {
+        gap: 20px;
+    }
+
+    .cartao-substancia {
+        padding: 20px;
+    }
+
+    .nome-substancia {
+        font-size: 1.8em;
+    }
+
+    .formula-substancia {
+        font-size: 1.5em;
+    }
+
+    .detector-ph {
+        padding: 20px;
+    }
+
+    .indicador-ph {
+        height: 150px;
+    }
+
+    .papel-tornassol {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cor-indicador {
+        width: 30px;
+        height: 30px;
+    }
+
+    .botoes-classificacao {
+        gap: 12px;
+    }
+
+    .botao-classificacao {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .icone-classificacao {
+        font-size: 1.8em;
+        width: 40px;
+    }
+
+    .titulo-classificacao {
+        font-size: 1.1em;
+    }
+
+    .painel-info {
+        gap: 15px;
+    }
+
+    .dica-jogo,
+    .info-ph {
+        padding: 16px;
+    }
+
+    .controles-jogo {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .valor-ph {
+        font-size: 2em;
+    }
+
+    .agulha-ph {
+        width: 3px;
+        height: 120px;
+    }
+
+    .escala-ph {
+        left: 5px;
+        font-size: 10px;
+    }
+
+    .marcador {
+        padding: 1px 4px;
+    }
+}
+
+/* Animações */
+@keyframes indicadorAtivo {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.indicador-ph.ativo {
+    animation: indicadorAtivo 0.8s ease-out;
+}
+
+@keyframes agulhaMovimento {
+    0% {
+        transform: translateX(-50%) translateY(-100%) rotate(90deg) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-100%) rotate(var(--rotacao-final)) scale(1.1);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-100%) rotate(var(--rotacao-final)) scale(1);
+    }
+}
+
+.agulha-ph.movendo {
+    animation: agulhaMovimento 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes classificacaoRevelada {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.classificacao-ph.revelada {
+    animation: classificacaoRevelada 0.5s ease-out;
+}

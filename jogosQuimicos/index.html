@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovens Talentos - Jogos Químicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="fundo-quimico"></div>
+    <div id="tela-inicial">
+        <button id="botao-iniciar" class="botao-iniciar">Iniciar</button>
+    </div>
+    <div id="tela-inicio" style="display: none;">
+        <div class="jogos-container">
+            <header class="header-principal">
+                <div class="logo-container">
+                    <div class="logo-jt">
+                        <div class="logo-bolinha"><span>JT</span></div>
+                        <div class="logo-texto">
+                            <h2>Jovens Talentos</h2>
+                            <p>Programa de Pré-Iniciação Científica</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="instituicoes">
+                    <a href="https://www.faperj.br/" target="_blank" rel="noopener noreferrer"
+                        style="text-decoration: none;">
+                        <div class="logo-instituicao" id="logo-faperj"><img src="imagens/faperj-logo.png" alt="FAPERJ">
+                        </div>
+                    </a>
+                    <a href="https://www.faetec.rj.gov.br/" target="_blank" rel="noopener noreferrer"
+                        style="text-decoration: none;">
+                        <div class="logo-instituicao" id="logo-faetec"><img src="imagens/faetec-logo.png" alt="FAETEC">
+                        </div>
+                    </a>
+                    <a href="https://www.iserj.net/portalacademico/" target="_blank" rel="noopener noreferrer"
+                        style="text-decoration: none;">
+                        <div class="logo-instituicao" id="logo-iserj"><img src="imagens/iserj-logo.png" alt="ISERJ">
+                        </div>
+                    </a>
+                </div>
+            </header>
+            <main class="conteudo-principal">
+                <h1>Coletânea - Jogos Químicos</h1>
+                <p class="subtitulo">Aprenda sobre a química através de jogos interativos e divertidos. Explore
+                    elementos, íons e reações químicas de forma lúdica e educativa.</p>
+                <div class="input-nomes">
+                    <input type="text" id="nome-j1" placeholder="Nome do Jogador 1" maxlength="20">
+                    <input type="text" id="nome-j2" placeholder="Nome do Jogador 2" maxlength="20">
+                </div>
+                <div class="input-nomes">
+                    <input type="text" id="nome-equipe" placeholder="Nome da Equipe (opcional)" maxlength="24">
+                </div>
+                <div class="botoes-jogos">
+                    <button id="botao-memoria-ligacoes" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Jogo da Memória de Ligações</span>
+                            <span class="descricao-jogo">Combine íons para formar compostos químicos. Teste sua memória
+                                e aprenda sobre ligações iônicas e covalentes!</span>
+                        </div>
+                    </button>
+
+                    <button id="botao-super-trunfo" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Super Trunfo Químico</span>
+                            <span class="descricao-jogo">Compare propriedades dos elementos químicos.
+                                Eletronegatividade, raio atômico e muito mais!</span>
+                        </div>
+                    </button>
+
+                    <button id="botao-balanceamento" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Balanceamento de Equações</span>
+                            <span class="descricao-jogo">Arraste os coeficientes e aprenda sobre estequiometria e
+                                conservação da massa de forma interativa.</span>
+                        </div>
+                    </button>
+                    <button id="botao-tabela-periodica" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Quebra-Cabeça da Tabela Periódica</span>
+                            <span class="descricao-jogo">Arraste os elementos químicos para suas posições corretas na
+                                tabela periódica. Aprenda sobre organização e propriedades dos elementos!</span>
+                        </div>
+                    </button>
+                    <button id="botao-ranking" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Ver Ranking</span>
+                            <span class="descricao-jogo">Confira o placar geral dos jogadores.</span>
+                        </div>
+                    </button>
+                    <button id="botao-atomo" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Caça aos Átomos</span>
+                            <span class="descricao-jogo">Construa átomos arrastando prótons, nêutrons e elétrons.
+                                Aprenda estrutura atômica!</span>
+                        </div>
+                    </button>
+                    <button id="botao-ph" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Detector de pH</span>
+                            <span class="descricao-jogo">Identifique se as substâncias são ácidas, básicas ou neutras.
+                                Aprenda sobre acidez!</span>
+                        </div>
+                    </button>
+                    <button id="botao-materia" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Transformações da Matéria</span>
+                            <span class="descricao-jogo">Aqueça ou resfrie substâncias para ver mudanças de estado.
+                                Aprenda sobre estados físicos!</span>
+                        </div>
+                    </button>
+                    <button id="botao-organico" class="botao-jogo">
+                        <div class="botao-conteudo">
+                            <span class="titulo-jogo">Classificador Orgânico</span>
+                            <span class="descricao-jogo">Identifique as funções orgânicas das moléculas. Aprenda química
+                                orgânica!</span>
+                        </div>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        const botaoIniciar = document.getElementById('botao-iniciar');
+        const telaInicial = document.getElementById('tela-inicial');
+        const telaInicio = document.getElementById('tela-inicio');
+
+        const botaoMemoria = document.getElementById('botao-memoria-ligacoes');
+        const botaoSuperTrunfo = document.getElementById('botao-super-trunfo');
+        const botaoBalanceamento = document.getElementById('botao-balanceamento');
+        const botaoTabelaPeriodica = document.getElementById('botao-tabela-periodica');
+        const botaoAtomo = document.getElementById('botao-atomo');
+        const botaoPh = document.getElementById('botao-ph');
+        const botaoMateria = document.getElementById('botao-materia');
+        const botaoOrganico = document.getElementById('botao-organico');
+        const botaoRanking = document.getElementById('botao-ranking');
+        const inputNomeJ1 = document.getElementById('nome-j1');
+        const inputNomeJ2 = document.getElementById('nome-j2');
+        const inputNomeEquipe = document.getElementById('nome-equipe');
+
+        window.addEventListener('load', () => {
+            const nome1 = localStorage.getItem('nomeJogador1');
+            const nome2 = localStorage.getItem('nomeJogador2');
+            const nomeEquipe = localStorage.getItem('nomeEquipe');
+            if (nome1) inputNomeJ1.value = nome1;
+            if (nome2) inputNomeJ2.value = nome2;
+            if (nomeEquipe) inputNomeEquipe.value = nomeEquipe;
+        });
+        function salvarNomes() {
+            const nome1 = inputNomeJ1.value.trim() || "Jogador 1";
+            const nome2 = inputNomeJ2.value.trim() || "Jogador 2";
+            const equipe = (inputNomeEquipe.value || '').trim();
+            localStorage.setItem('nomeJogador1', nome1);
+            localStorage.setItem('nomeJogador2', nome2);
+            if (equipe) {
+                localStorage.setItem('nomeEquipe', equipe);
+            } else {
+                localStorage.removeItem('nomeEquipe');
+            }
+        }
+        botaoMemoria.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'memoriaLigacoes.html';
+        });
+        botaoSuperTrunfo.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'superTrunfo.html';
+        });
+        botaoBalanceamento.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'balanceamento.html';
+        });
+        botaoTabelaPeriodica.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'tabelaPeriodica.html';
+        });
+        botaoAtomo.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'cacaaAtomos.html';
+        });
+        botaoPh.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'detectorPh.html';
+        });
+        botaoMateria.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'transformacoesMateria.html';
+        });
+        botaoOrganico.addEventListener('click', () => {
+            tocarClick();
+            salvarNomes();
+            window.location.href = 'classificadorOrganico.html';
+        });
+        botaoRanking.addEventListener('click', () => {
+            tocarClick();
+            window.location.href = 'ranking.html';
+        });
+
+        botaoIniciar.addEventListener('click', () => {
+            tocarClick();
+            telaInicial.style.display = 'none';
+            telaInicio.style.display = 'block';
+        });
+    </script>
+    <script src="sons.js"></script>
+    <script src="floatingElements.js"></script>
+</body>
+
+</html>
